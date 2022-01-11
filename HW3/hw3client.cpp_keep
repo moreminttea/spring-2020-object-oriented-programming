@@ -1,0 +1,23 @@
+
+// ecs36b first program
+
+#include <iostream>
+#include "hw3client.h"
+#include <jsonrpccpp/client/connectors/httpclient.h>
+
+using namespace jsonrpc;
+using namespace std;
+
+int main() {
+  HttpClient httpclient("http://localhost:8384");
+  hw3Client first(httpclient, JSONRPC_CLIENT_V2);
+
+  try {
+    Json::Value v1 = first.ecs36b_hw3("call", "This is a flight JSON string!", "Flight", "local:8384", "00000003", "1234567890");
+    Json::Value v2 = first.ecs36b_hw3("call", "This is a flight JSON string!", "Flight", "local:8384", "00000002", "1234567890");
+    cout << v1.toStyledString() << endl;
+    cout << v2.toStyledString() << endl;
+  } catch (JsonRpcException &e) {
+    cerr << e.what() << endl;
+  }
+}
