@@ -1,1 +1,2 @@
-# spring-2020-object-oriented-programming
+# Object Oriented Programming (Spring 2020)
+- Languages: C++
